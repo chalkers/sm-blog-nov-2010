@@ -1,0 +1,44 @@
+\users <%=  image_tag User.first.gravatar %>
+<br/>
+contacts
+
+<% Contacts.all.each do |contact| %>
+	<%= image_tag contact.gravatar %>
+<% end %>
+
+
+
+<table>
+  <tr>
+    <th>title</th><th>body</th>
+  </tr>
+
+  <% @posts.each do |post| %>
+      <tr>
+        <td>
+          <%= link_to post.title, post %>
+        </td>
+        <td>
+          <%= post.body %>
+        </td>
+        <% if signed_in? %>
+            <td>
+                <%= link_to "Edit Post", edit_post_path(post) %>
+                <%= link_to "Delete Post", post,
+                    :confirm => "Are you sure?",
+                    :method => :delete %>
+            </td>
+        <% end %>
+      </tr>
+  <% end %>
+
+</table>
+
+<%= will_paginate @posts %>
+
+
+<% if signed_in? %>
+    <p>
+        <%= link_to "New Post", new_post_path %>
+    </p>
+<% end %>

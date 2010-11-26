@@ -1,0 +1,13 @@
+<p>
+    <%= comment.name %>
+</p>
+<p>
+    <%= comment.comment %>
+</p>
+<% if signed_in? %>
+    <p>
+        <%= link_to "Delete Comment", comment,
+                    :confirm => "Are you sure?",
+                    :method => :delete %>
+    </p>
+<% end %>

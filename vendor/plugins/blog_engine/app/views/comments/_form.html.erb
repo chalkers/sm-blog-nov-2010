@@ -1,0 +1,25 @@
+<%= form_for(@comment) do |f| %>
+
+    <% @comment.errors.full_messages.each do |message| %>
+        <p>
+          <%= message %>
+        </p>
+    <% end %>
+      
+    <%= f.hidden_field :post_id %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+
+    <%= f.label :website %>
+    <%= f.text_field :website %>
+
+    <%= f.label :comment %>
+    <%= f.text_area :comment %>
+
+    <%= f.submit "Add Comment" %>
+
+<% end %>
